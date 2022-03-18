@@ -19,7 +19,10 @@ var Doneˀ = Done
 var DoneHuh = Done
 
 //goland:noinspection ALL
-var Done没 = Done
+var Done了没 = Done
 
 //goland:noinspection ALL
 var Doneしましたと言うは教えて来れますか = Done
+
+//goland:noinspection ALL
+var Done했다고말해줄수있습니까 = Done
