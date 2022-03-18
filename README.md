@@ -1,12 +1,12 @@
 # libIfErr
 
-Golang common helper routines. Each module have their own README.
+Golang common helper routines. Each module have its own README.
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/jamesits/libiferr.svg)](https://pkg.go.dev/github.com/jamesits/libiferr)
 
 ## Usage
 
-Add the latest version of libIfErr to your project:
+Add the latest (unstable) version of libIfErr to your project:
 
 ```shell
 go get -u -v "github.com/jamesits/libiferr@trunk"
