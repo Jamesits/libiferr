@@ -22,4 +22,4 @@ var DoneHuh = Done
 var Done没 = Done
 
 //goland:noinspection ALL
-var Doneしましたと言うはご存知ですか = Done
+var Doneしましたと言うは教えて来れますか = Done
