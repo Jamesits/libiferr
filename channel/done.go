@@ -14,4 +14,12 @@ func Done(done chan struct{}) bool {
 
 //goland:noinspection ALL
 var Doneˀ = Done
+
+//goland:noinspection ALL
 var DoneHuh = Done
+
+//goland:noinspection ALL
+var Done没 = Done
+
+//goland:noinspection ALL
+var Doneしましたと言うはご存知ですか = Done
