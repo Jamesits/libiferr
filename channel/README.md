@@ -1,0 +1,3 @@
+# channel
+
+Inspects a channel.
