@@ -1,6 +1,7 @@
 package panicked
 
 import (
+	"errors"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
@@ -15,7 +16,8 @@ func TestCatchPanicked(t *testing.T) {
 	err := Catch(func() {
 		panic(testString)
 	})
-	assert.Equal(t, err, testString)
+
+	assert.Equal(t, testString, err)
 }
 
 func TestCatchNotPanicked(t *testing.T) {
@@ -27,5 +29,40 @@ func TestCatchNotPanicked(t *testing.T) {
 	err := Catch(func() {
 
 	})
-	assert.Equal(t, err, nil)
+
+	assert.Equal(t, nil, err)
+}
+
+func TestCatchErrorPanickedError(t *testing.T) {
+	testErr := errors.New("test panicked.Catch")
+	err := CatchError(func() {
+		panic(testErr)
+	})
+
+	assert.Equal(t, testErr, err)
+}
+
+func TestCatchErrorPanickedString(t *testing.T) {
+	testString := "test panicked.Catch"
+	err := CatchError(func() {
+		panic(testString)
+	})
+
+	assert.Equal(t, errors.New(testString), err)
+}
+
+func TestCatchErrorPanickedUnknownType(t *testing.T) {
+	err := CatchError(func() {
+		panic(1)
+	})
+
+	assert.Equal(t, errors.New("int: 1"), err)
+}
+
+func TestCatchErrorNotPanicked(t *testing.T) {
+	err := CatchError(func() {
+
+	})
+
+	assert.Nil(t, err)
 }
