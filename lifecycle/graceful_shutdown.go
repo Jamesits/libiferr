@@ -1,6 +1,7 @@
 package lifecycle
 
 import (
+	"context"
 	"os"
 	"os/signal"
 )
@@ -9,13 +10,15 @@ type GracefulShutdownCallbackFunction func() (exitCode int)
 
 // WaitForKeyboardInterruptAsync starts a new goroutine waiting for Ctrl-C events. If an event is received, it runs the
 // hook function and quits.
-func WaitForKeyboardInterruptAsync(hook GracefulShutdownCallbackFunction) {
-	var signalChannel = make(chan os.Signal, 1)
-	signal.Notify(signalChannel, os.Interrupt)
+// It returns a stop function which can be used to disable the event hook. 
+func WaitForKeyboardInterruptAsync(hook GracefulShutdownCallbackFunction) func() {
+	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
 
 	go func() {
-		for range signalChannel {
-			os.Exit(hook())
-		}
+		<-ctx.Done()
+		stop()
+		GracefulShutdownCallbackFunction()
 	}()
+
+	return stop
 }
