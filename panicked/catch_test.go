@@ -13,7 +13,7 @@ func TestCatchPanicked(t *testing.T) {
 	}()
 
 	testString := "test panicked.Catch"
-	err := Catch(func() {
+	err, _ := Catch(func() {
 		panic(testString)
 	})
 
@@ -26,7 +26,7 @@ func TestCatchNotPanicked(t *testing.T) {
 		assert.Nil(t, err)
 	}()
 
-	err := Catch(func() {
+	err, _ := Catch(func() {
 
 	})
 
@@ -35,7 +35,7 @@ func TestCatchNotPanicked(t *testing.T) {
 
 func TestCatchErrorPanickedError(t *testing.T) {
 	testErr := errors.New("test panicked.Catch")
-	err := CatchError(func() {
+	err, _ := CatchError(func() {
 		panic(testErr)
 	})
 
@@ -44,7 +44,7 @@ func TestCatchErrorPanickedError(t *testing.T) {
 
 func TestCatchErrorPanickedString(t *testing.T) {
 	testString := "test panicked.Catch"
-	err := CatchError(func() {
+	err, _ := CatchError(func() {
 		panic(testString)
 	})
 
@@ -52,7 +52,7 @@ func TestCatchErrorPanickedString(t *testing.T) {
 }
 
 func TestCatchErrorPanickedUnknownType(t *testing.T) {
-	err := CatchError(func() {
+	err, _ := CatchError(func() {
 		panic(1)
 	})
 
@@ -60,7 +60,7 @@ func TestCatchErrorPanickedUnknownType(t *testing.T) {
 }
 
 func TestCatchErrorNotPanicked(t *testing.T) {
-	err := CatchError(func() {
+	err, _ := CatchError(func() {
 
 	})
 
