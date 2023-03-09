@@ -17,7 +17,7 @@ func WaitForKeyboardInterruptAsync(hook GracefulShutdownCallbackFunction) func()
 	go func() {
 		<-ctx.Done()
 		stop()
-		GracefulShutdownCallbackFunction()
+		hook()
 	}()
 
 	return stop
