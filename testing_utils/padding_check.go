@@ -12,3 +12,7 @@ import (
 func AssertSameSize[Expected any, Actual any](t *testing.T) {
 	assert.EqualValues(t, unsafe.Sizeof(*new(Expected)), unsafe.Sizeof(*new(Actual)))
 }
+
+func AssertDifferentSize[Expected any, Actual any](t *testing.T) {
+	assert.NotEqualValues(t, unsafe.Sizeof(*new(Expected)), unsafe.Sizeof(*new(Actual)))
+}
