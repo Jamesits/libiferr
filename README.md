@@ -9,7 +9,7 @@
 Add the latest (unstable) version of libIfErr to your project:
 
 ```shell
-go get -u -v "github.com/jamesits/libiferr@trunk"
+GOPROXY=direct go get -u -v "github.com/jamesits/libiferr@trunk"
 ```
 
 ### logrus support
